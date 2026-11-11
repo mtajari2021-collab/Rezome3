@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه - مهندس مرادی</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #1f2937;
+            line-height: 1.6;
+            padding: 30px 15px;
+        }
+
+        .resume {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* ===== سایدبار ===== */
+        .sidebar {
+            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+            color: #ffffff;
+            padding: 40px 28px;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 700;
+            color: #1e3a8a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .title {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.25);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 13.5px;
+        }
+
+        .contact-item span {
+            opacity: 0.95;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 12px;
+            font-size: 13.5px;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: #60a5fa;
+            border-radius: 3px;
+        }
+
+        .languages {
+            margin-top: 30px;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13.5px;
+        }
+
+        /* ===== محتوای اصلی ===== */
+        .main {
+            padding: 40px 40px;
+        }
+
+        .main-section {
+            margin-bottom: 32px;
+        }
+
+        .main-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .main-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-title::before {
+            content: "";
+            width: 6px;
+            height: 22px;
+            background: #1e3a8a;
+            border-radius: 3px;
+        }
+
+        .about-text {
+            font-size: 14.5px;
+            color: #4b5563;
+            text-align: justify;
+        }
+
+        .job, .edu {
+            margin-bottom: 22px;
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .job:last-child, .edu:last-child {
+            margin-bottom: 0;
+        }
+
+        .job::before, .edu::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: #1e3a8a;
+            border-radius: 50%;
+        }
+
+        .job-header, .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .job-title, .edu-title {
+            font-size: 15.5px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .job-company, .edu-school {
+            font-size: 14px;
+            color: #1e40af;
+            font-weight: 500;
+        }
+
+        .job-date, .edu-date {
+            font-size: 13px;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .job-desc {
+            font-size: 13.5px;
+            color: #4b5563;
+            margin-top: 6px;
+        }
+
+        .job-desc ul {
+            margin-right: 18px;
+            margin-top: 6px;
+        }
+
+        .job-desc li {
+            margin-bottom: 4px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: #1e40af;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
+        }
+
+        .project-name {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        /* ===== چاپ ===== */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        /* ===== ریسپانسیو ===== */
+        @media (max-width: 768px) {
+            .resume {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                padding: 30px 24px;
+            }
+            .main {
+                padding: 30px 24px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <!-- سایدبار -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">M</div>
+                <h1 class="name">مهندس مرادی</h1>
+                <p class="title">برنامه‌نویس وب | مربی</p>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">اطلاعات تماس</h3>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>تهران، ایران</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>۰۹۱۲-XXX-XXXX</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>moradi@email.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>moradi.dev</span>
+                </div>
+            </div>
+
+            <div class="section" style="margin-top: 32px;">
+                <h3 class="section-title">مهارت‌ها</h3>
+                <ul class="skills-list">
+                    <li>
+                        HTML & CSS
+                        <div class="skill-bar"><div class="skill-level" style="width: 95%;"></div></div>
+                    </li>
+                    <li>
+                        JavaScript
+                        <div class="skill-bar"><div class="skill-level" style="width: 90%;"></div></div>
+                    </li>
+                    <li>
+                        Python
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+                    </li>
+                    <li>
+                        Django
+                        <div class="skill-bar"><div class="skill-level" style="width: 80%;"></div></div>
+                    </li>
+                    <li>
+                        React
+                        <div class="skill-bar"><div class="skill-level" style="width: 75%;"></div></div>
+                    </li>
+                    <li>
+                        Git & GitHub
+                        <div class="skill-bar"><div class="skill-level" style="width: 88%;"></div></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="languages">
+                <h3 class="section-title">زبان‌ها</h3>
+                <div class="lang-item">
+                    <span>فارسی</span>
+                    <span>بومی</span>
+                </div>
+                <div class="lang-item">
+                    <span>انگلیسی</span>
+                    <span>پیشرفته</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- محتوای اصلی -->
+        <main class="main">
+            <!-- درباره من -->
+            <section class="main-section">
+                <h2 class="main-title">درباره من</h2>
+                <p class="about-text">
+                    مهندس کامپیوتر با بیش از ۵ سال تجربه در طراحی و توسعه وب. علاقه‌مند به آموزش و انتقال دانش به نسل جدید برنامه‌نویسان. تخصص در فرانت‌اند (HTML, CSS, JavaScript) و بک‌اند با پایتون و جنگو. همیشه به دنبال یادگیری فناوری‌های جدید و ساخت پروژه‌های کاربردی هستم.
+                </p>
+            </section>
+
+            <!-- سوابق شغلی -->
+            <section class="main-section">
+                <h2 class="main-title">سوابق شغلی</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">مربی برنامه‌نویسی وب</div>
+                            <div class="job-company">آموزشگاه فنی و حرفه‌ای</div>
+                        </div>
+                        <span class="job-date">۱۴۰۲ - اکنون</span>
+                    </div>
+                    <div class="job-desc">
+                        <ul>
+                            <li>آموزش HTML، CSS، JavaScript و پایتون به هنرجویان</li>
+                            <li>طراحی سؤالات آزمون عملی و نظارت بر پروژه‌ها</li>
+                            <li>آماده‌سازی هنرجویان برای بازار کار</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">توسعه‌دهنده فرانت‌اند</div>
+                            <div class="job-company">شرکت نرم‌افزاری</div>
+                        </div>
+                        <span class="job-date">۱۴۰۰ - ۱۴۰۲</span>
+                    </div>
+                    <div class="job-desc">
+                        <ul>
+                            <li>توسعه رابط کاربری وب‌سایت‌ها و پنل‌های مدیریت</li>
+                            <li>همکاری با تیم بک‌اند برای اتصال API</li>
+                            <li>بهینه‌سازی عملکرد و تجربه کاربری</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- تحصیلات -->
+            <section class="main-section">
+                <h2 class="main-title">تحصیلات</h2>
+
+                <div class="edu">
+                    <div class="edu-header">
+                        <div>
+                            <div class="edu-title">کارشناسی مهندسی کامپیوتر</div>
+                            <div class="edu-school">دانشگاه [نام دانشگاه]</div>
+                        </div>
+                        <span class="edu-date">۱۳۹۶ - ۱۴۰۰</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- پروژه‌ها -->
+            <section class="main-section">
+                <h2 class="main-title">پروژه‌های منتخب</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-name">سیستم مدیریت آموزشگاه</div>
+                        <div class="project-desc">پنل مدیریت هنرجویان و دوره‌ها با Django و React</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-name">فروشگاه آنلاین</div>
+                        <div class="project-desc">فروشگاه کامل با سبد خرید، پرداخت و پنل ادمین</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-name">رزومه آنلاین</div>
+                        <div class="project-desc">قالب رزومه حرفه‌ای با HTML و CSS خالص</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-name">دوره آموزشی وب</div>
+                        <div class="project-desc">طراحی و تدریس دوره کامل فرانت‌اند و بک‌اند</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
